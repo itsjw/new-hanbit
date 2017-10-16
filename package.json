@@ -4,7 +4,7 @@
   "private": true,
   "main": "dist/server",
   "scripts": {
-    "start": "NODE_ENV=production node .",
+    "start": "node .",
     "env:dev": "cross-env NODE_ENV=development",
     "env:prod": "cross-env NODE_ENV=production",
     "env:example": "cross-env SOURCE=src-example",
@@ -114,6 +114,7 @@
     "styled-theme": "^0.3.0",
     "styled-tools": "^0.1.2",
     "validator": "^8.0.0",
+    "webpack-bundle-analyzer": "^2.9.0",
     "window-or-global": "^1.0.1"
   }
 }

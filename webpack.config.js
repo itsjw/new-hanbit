@@ -9,6 +9,7 @@ const AssetsByTypePlugin = require('webpack-assets-by-type-plugin')
 const ChildConfigPlugin = require('webpack-child-config-plugin')
 const SpawnPlugin = require('webpack-spawn-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const {
   addPlugins, createConfig, entryPoint, env, setOutput,
@@ -16,7 +17,7 @@ const {
 } = require('@webpack-blocks/webpack2')
 
 const host = process.env.HOST || 'localhost'
-const port = (+process.env.PORT + 1) || 3030
+const port = (+process.env.PORT + 1) || 3001
 const sourceDir = process.env.SOURCE || 'src'
 const publicPath = `/${process.env.PUBLIC_PATH || ''}/`.replace('//', '/')
 const sourcePath = path.join(process.cwd(), sourceDir)
@@ -139,6 +140,7 @@ const client = createConfig([
         threshold: 10240,
         minRatio: 0,
       }),
+      new BundleAnalyzerPlugin(),
     ]),
   ]),
 ])

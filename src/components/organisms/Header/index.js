@@ -26,6 +26,7 @@ const Wrapper = styled.div`
   width: 100%;
   padding: 1em;
   position: fixed;
+  z-index: 100;
 
   box-shadow: 0 3px 2px -2px ${palette('greyscale', 0)};
   background: rgba(255, 255, 255, 0.7);

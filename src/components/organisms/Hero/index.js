@@ -9,6 +9,7 @@ import { Button, Heading, Nav, Image } from 'components'
 const Wrapper = Image.extend`
   width: 100vw;
   height: 40em;
+  position: relative;
 
   // small device
   @media(max-width: 30em) {
@@ -30,6 +31,7 @@ const MockWrapper = styled.img`
 `
 
 const InnerWrapper = styled.div`
+  position: absolute;
   width: 15em;
   padding: 2em;
   height: 12em;

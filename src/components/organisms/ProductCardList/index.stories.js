@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { ProductCardList } from 'components'
-import { mockProducts } from 'lib'
+import { mockProducts } from 'helpers'
 import { globalStyle } from '../../themes/globalStyle'
 
 globalStyle
