@@ -9,6 +9,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
 import { renderToString } from 'react-router-server'
+import compression from 'compression'
 
 import { port, host, basename } from 'config'
 import configureStore from 'store/configure'
@@ -41,13 +42,9 @@ const renderHtml = ({ serverState, initialState, content, sheet }) => {
 
 const app = express()
 
-app.get('*.js', (req, res, next) => {
-  req.url += '.gz'
-  res.set('Content-Encoding', 'gzip')
-  next()
-})
-
 app.use(basename, express.static(path.resolve(process.cwd(), 'dist/public')))
+
+app.use(compression())
 
 app.use((req, res, next) => {
   const location = req.url
