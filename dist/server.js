@@ -802,6 +802,12 @@ var renderHtml = function renderHtml(_ref2) {
 
 var app = __WEBPACK_IMPORTED_MODULE_2_express___default()();
 
+app.get('*.js', function (req, res, next) {
+  req.url += '.gz';
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
+
 app.use(__WEBPACK_IMPORTED_MODULE_10_config__["basename"], __WEBPACK_IMPORTED_MODULE_2_express___default.a.static(__WEBPACK_IMPORTED_MODULE_1_path___default.a.resolve(process.cwd(), 'dist/public')));
 
 app.use(function (req, res, next) {

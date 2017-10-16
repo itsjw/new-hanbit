@@ -8,6 +8,7 @@ const nodeExternals = require('webpack-node-externals')
 const AssetsByTypePlugin = require('webpack-assets-by-type-plugin')
 const ChildConfigPlugin = require('webpack-child-config-plugin')
 const SpawnPlugin = require('webpack-spawn-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 
 const {
   addPlugins, createConfig, entryPoint, env, setOutput,
@@ -130,6 +131,14 @@ const client = createConfig([
     splitVendor(),
     addPlugins([
       new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
+      new webpack.optimize.AggressiveMergingPlugin(),
+      new CompressionPlugin({
+        asset: '[path].gz[query]',
+        algorithm: 'gzip',
+        test: /\.js$|\.css$|\.html$/,
+        threshold: 10240,
+        minRatio: 0.8,
+      }),
     ]),
   ]),
 ])
