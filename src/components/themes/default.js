@@ -4,7 +4,7 @@ import { reversePalette } from 'styled-theme/composer'
 const theme = {}
 
 theme.palette = {
-  danger: ['#d32f2f', '#f44336', '#f8877f', '#ffcdd2'],
+  danger: ['#f00000', '#f44336', '#f8877f', '#ffcdd2'],
   success: ['#388e3c', '#4caf50', '#7cc47f', '#c8e6c9'],
   // background: white2
   white: ['#fff', '#f4f4f4'],

@@ -8,6 +8,11 @@ const Img = Image.extend`
   width: 100%;
   height: ${props => !props['data-small'] && '75%'};
   cursor: pointer;
+
+  // overide default hover effect
+  &:hover {
+    opacity: 1;
+  }
 `
 
 const Wrapper = styled.div`

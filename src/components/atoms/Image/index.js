@@ -9,6 +9,10 @@ const Image = styled(ProgressiveImage).attrs({
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  &:hover {
+    opacity: 0.7;
+    transition: all 0.3s linear;
+  }
 `
 
 export default Image

@@ -19,6 +19,11 @@ const Button = (props) => {
   )
 }
 
+Button.defaultProps = {
+  color: palette('black', 0),
+  size: 10,
+}
+
 Button.propTypes = {
   color: PropTypes.func,
   size: PropTypes.number,

@@ -10,13 +10,17 @@ const Wrapper = styled.div`
   align-items: center;
 `
 
-const Loading = () => (
-  <Wrapper>
-    <Spinner
-      size={50}
-      text={'페이지를 가져오는 중 ..'}
-    />
-  </Wrapper>
-)
+const Loading = ({
+  props,
+}) => {
+  return (
+    <Wrapper>
+      <Spinner
+        size={50}
+        text={'페이지를 가져오는 중 ..'}
+      />
+    </Wrapper>
+  )
+}
 
 export default Loading

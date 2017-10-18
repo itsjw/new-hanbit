@@ -17,7 +17,10 @@ const {
 } = require('@webpack-blocks/webpack2')
 
 const host = process.env.HOST || 'localhost'
-const port = (+process.env.PORT + 1) || 3001
+// static file serving url --> config의 port와 같으면 에러 발생
+// 여기서 process.env.PORT는 초기에 undefined임
+// 일반적으로 unexpected token이 뜨는 경우 url이 제대로 되지 않아서일 확률이 높음 즉 파일이 제대로 수신되고 있지 않다는 뜻
+const port = (+process.env.PORT + 1) || 3030
 const sourceDir = process.env.SOURCE || 'src'
 const publicPath = `/${process.env.PUBLIC_PATH || ''}/`.replace('//', '/')
 const sourcePath = path.join(process.cwd(), sourceDir)

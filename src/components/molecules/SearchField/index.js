@@ -25,7 +25,7 @@ const SearchField = () => {
   return (
     <Wrapper className="search">
       <Icon name="search" small />
-      <Input type="text" placeholder="검색: 한빛안경" transparent />
+      <Input type="text" placeholder="검색: 한빛안경" font={0.8} transparent indented />
       <Icon name="close" small />
     </Wrapper>
   )

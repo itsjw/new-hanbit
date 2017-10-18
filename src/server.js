@@ -9,6 +9,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
 import { renderToString } from 'react-router-server'
+import helmet from 'helmet'
 
 import { port, host, basename } from 'config'
 import configureStore from 'store/configure'
@@ -41,12 +42,14 @@ const renderHtml = ({ serverState, initialState, content, sheet }) => {
 
 const app = express()
 
-if (process.env.NODE_ENV !== 'development') {
+if (process.env.NODE_ENV === 'production') {
   app.get('*.js', (req, res, next) => {
     req.url += '.gz'
     res.set('Content-Encoding', 'gzip')
     next()
   })
+
+  app.use(helmet())
 }
 
 app.use(basename, express.static(path.resolve(process.cwd(), 'dist/public')))

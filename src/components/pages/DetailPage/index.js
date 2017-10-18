@@ -2,6 +2,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { mockProducts } from 'helpers'
 
 import {
   Header,
@@ -51,6 +52,11 @@ const DetailPage = ({
   match,
 }) => {
   const { id } = match.params
+
+  // handle invalid ids
+  if (!mockProducts[id]) {
+    return <p>존재하지 않는 상품입니다.</p>
+  }
   return (
     <PageTemplate header={<Header />} padding={'0 5em'}>
       <Wrapper>

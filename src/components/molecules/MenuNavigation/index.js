@@ -28,15 +28,15 @@ const MenuNavigation = () => {
         subNavs={['lorem ipsum', 'lorem ipsum', 'lorem ipsum', 'lorem ipsum']}
       />
       <Nav
-        to="/account"
-        name="LOGIN"
+        to="/contact"
+        name="CONTACT US"
         data-color={palette('white', 0)}
         data-hoverStyle="transition"
         data-hoverColor={palette('greyscale', 1)}
       />
       <Nav
-        to="/contact"
-        name="CONTACT US"
+        to="/account"
+        name="LOGIN"
         data-color={palette('white', 0)}
         data-hoverStyle="transition"
         data-hoverColor={palette('greyscale', 1)}

@@ -21,6 +21,11 @@ const Wrapper = Image.extend`
   @media(min-width: 80em) {
     height: 50em;
   }
+
+  // overide default hover effect
+  &:hover {
+    opacity: 1;
+  }
 `
 
 // 서버에서 Image 객체를 활용할 수 없기 때문에 만듬

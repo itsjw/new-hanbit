@@ -15,14 +15,20 @@ globalStyle
 
 const HomePage = Loadable({
   loader: () => import('components/pages/HomePage'),
-  loading: Loading,
-  delay: 300,
+  loading: () => <Loading />,
+  delay: 500,
 })
 
 const DetailPage = Loadable({
   loader: () => import('components/pages/DetailPage'),
-  loading: Loading,
-  delay: 300,
+  loading: () => <Loading />,
+  delay: 500,
+})
+
+const AccountPage = Loadable({
+  loader: () => import('components/pages/AccountPage'),
+  loading: () => <Loading />,
+  delay: 500,
 })
 
 const App = () => {
@@ -38,7 +44,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <Switch>
           <ScrollToTop path="/" component={HomePage} exact />
-          <Route path="/account" render={() => <p>account</p>} exact />
+          <ScrollToTop path="/account" component={AccountPage} exact />
           <Route path="/contact" render={() => <p>contact</p>} exact />
           <ScrollToTop path="/detail/:id" component={DetailPage} />
           <Route render={() => <p>404 NOT FOUND</p>} />
