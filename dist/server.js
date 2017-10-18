@@ -852,9 +852,10 @@ var renderHtml = function renderHtml(_ref2) {
 var app = __WEBPACK_IMPORTED_MODULE_2_express___default()();
 
 if (true) {
-  app.get('*.js', function (req, res, next) {
+  app.get(/(vender+|client+).js/, function (req, res, next) {
     req.url += '.gz';
     res.set('Content-Encoding', 'gzip');
+    res.setHeader('Content-Type', 'application/javascript');
     next();
   });
 

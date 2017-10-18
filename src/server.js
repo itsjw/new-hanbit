@@ -43,9 +43,10 @@ const renderHtml = ({ serverState, initialState, content, sheet }) => {
 const app = express()
 
 if (process.env.NODE_ENV === 'production') {
-  app.get('*.js', (req, res, next) => {
+  app.get(/(vender+|client+).js/, (req, res, next) => {
     req.url += '.gz'
     res.set('Content-Encoding', 'gzip')
+    res.setHeader('Content-Type', 'application/javascript')
     next()
   })
 
