@@ -5,12 +5,14 @@ import { palette } from 'styled-theme'
 
 import { Nav, Image } from 'components'
 
+const ImageHeight = 15
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
   margin: 0.5em;
-  height: 25em;
+  height: ${ImageHeight + 5}em;
   background: ${palette('white', 0)};
   border-radius: 5px;
   flex-basis: 100%;
@@ -36,13 +38,13 @@ const Wrapper = styled.div`
 // 서버사이드에서 Image 객체를 쓸 수 없기 때문에 로딩하는 동안 가짜 이미지를 불러옴
 const MockImage = styled.div`
   width: 100%;
-  height: 20em;
+  height: ${ImageHeight}em;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 `
 
 const Img = Image.extend`
-  height: 20em;
+  height: ${ImageHeight}em;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 `

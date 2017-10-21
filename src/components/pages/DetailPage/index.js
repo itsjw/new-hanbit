@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   max-width: 80em;
   > div:first-child {
-    height: 29em;
+    height: 25em;
   }
 
   @media(min-width: 50em) {

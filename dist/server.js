@@ -2619,7 +2619,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_styled_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_styled_theme__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_components__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_components__);
-var _templateObject = _taggedTemplateLiteral(['\n  height: 20em;\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n'], ['\n  height: 20em;\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  height: ', 'em;\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n'], ['\n  height: ', 'em;\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -2630,12 +2630,14 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 
 
-var Wrapper = __WEBPACK_IMPORTED_MODULE_2_styled_components___default.a.div(['display:flex;flex-direction:column;flex:1;margin:0.5em;height:25em;background:', ';border-radius:5px;flex-basis:100%;@media(min-width:40em){flex-basis:45%;}@media(min-width:70em){flex-basis:30%;}@media(min-width:100em){flex-basis:22%;}> a{width:100%;height:100%;}'], __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_styled_theme__["palette"])('white', 0));
+var ImageHeight = 15;
+
+var Wrapper = __WEBPACK_IMPORTED_MODULE_2_styled_components___default.a.div(['display:flex;flex-direction:column;flex:1;margin:0.5em;height:', 'em;background:', ';border-radius:5px;flex-basis:100%;@media(min-width:40em){flex-basis:45%;}@media(min-width:70em){flex-basis:30%;}@media(min-width:100em){flex-basis:22%;}> a{width:100%;height:100%;}'], ImageHeight + 5, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_styled_theme__["palette"])('white', 0));
 
 // 서버사이드에서 Image 객체를 쓸 수 없기 때문에 로딩하는 동안 가짜 이미지를 불러옴
-var MockImage = __WEBPACK_IMPORTED_MODULE_2_styled_components___default.a.div(['width:100%;height:20em;border-top-left-radius:5px;border-top-right-radius:5px;']);
+var MockImage = __WEBPACK_IMPORTED_MODULE_2_styled_components___default.a.div(['width:100%;height:', 'em;border-top-left-radius:5px;border-top-right-radius:5px;'], ImageHeight);
 
-var Img = __WEBPACK_IMPORTED_MODULE_4_components__["Image"].extend(_templateObject);
+var Img = __WEBPACK_IMPORTED_MODULE_4_components__["Image"].extend(_templateObject, ImageHeight);
 
 var BottomWrapper = __WEBPACK_IMPORTED_MODULE_2_styled_components___default.a.div(['display:flex;flex:1;flex-direction:column;justify-content:center;padding:1.5em 0.5em;line-height:1.4;& > p{font-size:1.2em;font-weight:600;color:', ';&:last-child{color:', ';font-weight:300;}}'], __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_styled_theme__["palette"])('greyscale', 3), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_styled_theme__["palette"])('greyscale', 1));
 
@@ -2690,13 +2692,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_styled_components__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_styled_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_styled_components__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_styled_theme__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_styled_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_styled_theme__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_components__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_components__);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_components__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_components___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_components__);
 
 
 
@@ -2709,9 +2708,9 @@ var SearchField = function SearchField() {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     Wrapper,
     { className: 'search' },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_components__["Icon"], { name: 'search', small: true }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_components__["Input"], { type: 'text', placeholder: '\uAC80\uC0C9: \uD55C\uBE5B\uC548\uACBD', font: 0.8, transparent: true, indented: true }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_components__["Icon"], { name: 'close', small: true })
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_components__["Icon"], { name: 'search', small: true }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_components__["Input"], { type: 'text', placeholder: '\uAC80\uC0C9: \uD55C\uBE5B\uC548\uACBD', font: 0.8, transparent: true, indented: true }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_components__["Icon"], { name: 'close', small: true })
   );
 };
 
@@ -3200,7 +3199,9 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 
 
-var Wrapper = __WEBPACK_IMPORTED_MODULE_2_styled_components___default.a.div(['width:50%;height:40vh;margin:10em auto;padding-top:5em;background-color:', ';display:flex;flex-direction:column;align-items:center;> form{width:60%;height:50%;display:flex;flex-direction:column;align-items:center;justify-content:space-around;> div{width:100%;}}'], __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_styled_theme__["palette"])('white', 0));
+var Wrapper = __WEBPACK_IMPORTED_MODULE_2_styled_components___default.a.div(['max-width:100%;height:auto;margin:0.5em auto;padding:2em 2em 1.4em 2em;background-color:', ';display:flex;flex-direction:column;justify-content:stretch;text-align:center;> form{flex-grow:1;display:flex;flex-direction:column;justify-content:center;> *{margin:0.6em 0;}}'], __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_styled_theme__["palette"])('white', 0));
+
+var BottomWrapper = __WEBPACK_IMPORTED_MODULE_2_styled_components___default.a.div(['display:flex;> *{margin-right:1em;}']);
 
 var EmailField = function EmailField(_ref) {
   var input = _ref.input,
@@ -3265,7 +3266,7 @@ var LocalLogin = function LocalLogin(_ref3) {
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       __WEBPACK_IMPORTED_MODULE_6_components__["Heading"],
       { size: 1.7 },
-      '\uB85C\uADF8\uC778'
+      '\uAC00\uC785'
     ),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'form',
@@ -3278,12 +3279,26 @@ var LocalLogin = function LocalLogin(_ref3) {
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_redux_form__["Field"], {
         name: 'password',
         component: PasswordField,
-        validate: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_redux_form_validators__["required"])({ message: '이메일을 입력해주세요.' }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_redux_form_validators__["length"])({ min: 4, message: '4자 이상 입력해주세요.' })]
+        validate: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_redux_form_validators__["required"])({ message: '비밀번호를 입력해주세요.' }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5_redux_form_validators__["length"])({ min: 4, message: '4자 이상 입력해주세요.' })]
       }),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_6_components__["Button"],
         { type: 'submit', full: true, disabled: disabled },
         '\uACC4\uC18D\uD558\uAE30'
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        BottomWrapper,
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_6_components__["Text"],
+          null,
+          '\uC774\uBBF8 \uD68C\uC6D0\uC774\uC2E0\uAC00\uC694?'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_6_components__["Nav"],
+          { to: '/', 'data-hoverStyle': 'transition', 'data-hoverColor': __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_styled_theme__["palette"])('greyscale', 1) },
+          '\uB85C\uADF8\uC778 \uD558\uAE30'
+        )
       )
     )
   );
@@ -3403,7 +3418,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-var Wrapper = __WEBPACK_IMPORTED_MODULE_1_styled_components___default.a.div(['display:flex;flex-direction:column;max-width:80em;> div:first-child{height:29em;}@media(min-width:50em){flex-wrap:wrap;flex-direction:row;> div:first-child{margin-right:2em;margin-bottom:2em;}> div:nth-child(2){height:20.75em;margin:1em 0 2em 0;}> div:nth-child(-n + 2){width:calc(50% - 1em);}}@media(min-width:70em){margin:0 auto;> div:first-child{height:40em;}> div:nth-child(2){height:29em;}}']);
+var Wrapper = __WEBPACK_IMPORTED_MODULE_1_styled_components___default.a.div(['display:flex;flex-direction:column;max-width:80em;> div:first-child{height:25em;}@media(min-width:50em){flex-wrap:wrap;flex-direction:row;> div:first-child{margin-right:2em;margin-bottom:2em;}> div:nth-child(2){height:20.75em;margin:1em 0 2em 0;}> div:nth-child(-n + 2){width:calc(50% - 1em);}}@media(min-width:70em){margin:0 auto;> div:first-child{height:40em;}> div:nth-child(2){height:29em;}}']);
 
 var DetailPage = function DetailPage(_ref) {
   var match = _ref.match;

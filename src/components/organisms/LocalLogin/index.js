@@ -5,28 +5,33 @@ import { palette } from 'styled-theme'
 import { Field } from 'redux-form'
 import { required, email, length } from 'redux-form-validators'
 
-import { Button, Heading, Input, Text } from 'components'
+import { Button, Heading, Input, Text, Nav } from 'components'
 
 const Wrapper = styled.div`
-  width: 50%;
-  height: 40vh;
-  margin: 10em auto;
-  padding-top: 5em;
+  max-width: 100%;
+  height: auto;
+  margin: 0.5em auto;
+  padding: 2em 2em 1.4em 2em;
   background-color: ${palette('white', 0)};
   display: flex;
   flex-direction: column;
-  align-items: center;
-
+  justify-content: stretch;
+  text-align: center;
   > form {
-    width: 60%;
-    height: 50%;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    > div {
-      width: 100%;
+    justify-content: center;
+    > * {
+      margin: 0.6em 0;
     }
+  }
+`
+
+const BottomWrapper = styled.div`
+  display: flex;
+  > * {
+    margin-right: 1em;
   }
 `
 
@@ -71,7 +76,7 @@ const LocalLogin = ({
 }) => {
   return (
     <Wrapper>
-      <Heading size={1.7}>로그인</Heading>
+      <Heading size={1.7}>가입</Heading>
       <form onSubmit={handleSubmit(submit)}>
         <Field
           name="email"
@@ -81,9 +86,13 @@ const LocalLogin = ({
         <Field
           name="password"
           component={PasswordField}
-          validate={[required({ message: '이메일을 입력해주세요.' }), length({ min: 4, message: '4자 이상 입력해주세요.' })]}
+          validate={[required({ message: '비밀번호를 입력해주세요.' }), length({ min: 4, message: '4자 이상 입력해주세요.' })]}
         />
         <Button type="submit" full disabled={disabled}>계속하기</Button>
+        <BottomWrapper>
+          <Text>이미 회원이신가요?</Text>
+          <Nav to="/" data-hoverStyle={'transition'} data-hoverColor={palette('greyscale', 1)}>로그인 하기</Nav>
+        </BottomWrapper>
       </form>
     </Wrapper>
   )

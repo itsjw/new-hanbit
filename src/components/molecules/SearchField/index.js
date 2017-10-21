@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { palette } from 'styled-theme'
 import PropTypes from 'prop-types'
 
 import { Input, Icon } from 'components'
