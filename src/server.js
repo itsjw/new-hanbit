@@ -9,7 +9,6 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
 import { renderToString } from 'react-router-server'
-import helmet from 'helmet'
 
 import { port, host, basename } from 'config'
 import configureStore from 'store/configure'
@@ -17,6 +16,15 @@ import api from 'services/api'
 import App from 'components/App'
 import Html from 'components/Html'
 import Error from 'components/Error'
+
+/* server modules */
+import helmet from 'helmet'
+import passport from 'passport'
+import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
+import user from './backend/routes/user'
+import connectMongodb from './backend/models/db'
+import { redisSession } from './backend/config/redis'
 
 const renderApp = ({ store, context, location, sheet }) => {
   const app = sheet.collectStyles(
@@ -42,6 +50,16 @@ const renderHtml = ({ serverState, initialState, content, sheet }) => {
 
 const app = express()
 
+connectMongodb()
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use(cookieParser())
+app.use(redisSession)
+app.use(passport.initialize())
+app.use(passport.session())
+require('./backend/config/passport')
+
 if (process.env.NODE_ENV === 'production') {
   app.get(/(vender+|client+).js/, (req, res, next) => {
     req.url += '.gz'
@@ -52,6 +70,8 @@ if (process.env.NODE_ENV === 'production') {
 
   app.use(helmet())
 }
+
+app.use('/user', user)
 
 app.use(basename, express.static(path.resolve(process.cwd(), 'dist/public')))
 

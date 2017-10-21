@@ -2,9 +2,15 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
-import Loadable from 'react-loadable'
 
-import { ScrollToTop, Loading } from 'components'
+import {
+  ScrollToTop,
+  HomePage,
+  DetailPage,
+  AccountPage,
+  Protected,
+} from 'components'
+import { CheckUser } from 'containers'
 
 // https://github.com/diegohaz/arc/wiki/Styling
 import theme from './themes/default'
@@ -12,24 +18,6 @@ import { globalStyle } from './themes/globalStyle'
 
 // inject global
 globalStyle
-
-const HomePage = Loadable({
-  loader: () => import('components/pages/HomePage'),
-  loading: () => <Loading />,
-  delay: 500,
-})
-
-const DetailPage = Loadable({
-  loader: () => import('components/pages/DetailPage'),
-  loading: () => <Loading />,
-  delay: 500,
-})
-
-const AccountPage = Loadable({
-  loader: () => import('components/pages/AccountPage'),
-  loading: () => <Loading />,
-  delay: 500,
-})
 
 const App = () => {
   return (
@@ -42,13 +30,16 @@ const App = () => {
         <link rel="icon" href="http://hanbitglasses.com/icon.png" />
       </Helmet>
       <ThemeProvider theme={theme}>
-        <Switch>
-          <ScrollToTop path="/" component={HomePage} exact />
-          <ScrollToTop path="/account" component={AccountPage} exact />
-          <Route path="/contact" render={() => <p>contact</p>} exact />
-          <ScrollToTop path="/detail/:id" component={DetailPage} />
-          <Route render={() => <p>404 NOT FOUND</p>} />
-        </Switch>
+        <div>
+          <CheckUser />
+          <Switch>
+            <ScrollToTop path="/" component={HomePage} exact />
+            <Protected path="/account" component={AccountPage} exact />
+            <Route path="/contact" render={() => <p>contact</p>} exact />
+            <ScrollToTop path="/detail/:id" component={DetailPage} />
+            <Route render={() => <p>404 NOT FOUND</p>} />
+          </Switch>
+        </div>
       </ThemeProvider>
     </div>
   )

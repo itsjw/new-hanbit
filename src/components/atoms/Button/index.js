@@ -11,11 +11,16 @@ const StyledButton = styled.button`
   background: ${({ transparent, color }) => transparent ? 'rgba(255, 255, 255, 0)' : color};
   color: ${({ color, transparent }) => transparent ? color : palette('white', 0)};
   width: ${({ full }) => full && '100%'};
+  opacity: ${({ disabled }) => disabled && '0.5'};
+  cursor: ${({ disabled }) => disabled && 'not-allowed'};
 `
 
-const Button = (props) => {
+const Button = ({
+  disabled,
+  ...props
+}) => {
   return (
-    <StyledButton {...props} />
+    <StyledButton {...props} disabled={disabled} />
   )
 }
 
@@ -29,6 +34,7 @@ Button.propTypes = {
   size: PropTypes.number,
   transparent: PropTypes.bool,
   full: PropTypes.bool,
+  disabled: PropTypes.bool,
 }
 
 export default Button

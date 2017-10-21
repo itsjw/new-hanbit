@@ -2,7 +2,7 @@
 import 'isomorphic-fetch'
 import { stringify } from 'query-string'
 import merge from 'lodash/merge'
-import { apiUrl } from 'config'
+import { apiUrl, isBrowser } from 'config'
 
 export const checkStatus = (response) => {
   if (response.ok) {
@@ -20,6 +20,7 @@ export const parseSettings = ({ method = 'get', data, locale, ...otherSettings }
     Accept: 'application/json',
     'Content-Type': 'application/json',
     'Accept-Language': locale,
+    credentials: 'same-origin',
   }
   const settings = merge({
     body: data ? JSON.stringify(data) : undefined,

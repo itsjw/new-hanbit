@@ -24,7 +24,7 @@ export const globalStyle = injectGlobal`
         border: 0;
         vertical-align: baseline;
         // font setting
-        font-family: 'Arial', 'Times New Roman';
+        font-family: 'Helvetica', 'Times New Roman';
         font-size: 100%;
         font-weight: 100;
         box-sizing: border-box;

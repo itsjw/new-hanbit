@@ -67,6 +67,7 @@ const PasswordField = ({ input, meta: { touched, error }, ...rest }) => {
 const LocalLogin = ({
   handleSubmit,
   submit,
+  disabled,
 }) => {
   return (
     <Wrapper>
@@ -82,7 +83,7 @@ const LocalLogin = ({
           component={PasswordField}
           validate={[required({ message: '이메일을 입력해주세요.' }), length({ min: 4, message: '4자 이상 입력해주세요.' })]}
         />
-        <Button type="submit" full>계속하기</Button>
+        <Button type="submit" full disabled={disabled}>계속하기</Button>
       </form>
     </Wrapper>
   )
@@ -91,6 +92,7 @@ const LocalLogin = ({
 LocalLogin.propTypes = {
   handleSubmit: PropTypes.func,
   submit: PropTypes.func,
+  disabled: PropTypes.bool,
 }
 
 export default LocalLogin

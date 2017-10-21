@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const StyledHeading = styled.h1`
   font-size: ${({ size }) => size}em;
   color: ${({ color }) => color};
-  font-weight: 400;
+  font-weight: ${({ bold }) => bold * 100};
 `
 
 const Heading = (props) => {
@@ -17,6 +17,7 @@ const Heading = (props) => {
 Heading.propTypes = {
   size: PropTypes.number,
   color: PropTypes.func,
+  bold: PropTypes.number,
 }
 
 export default Heading

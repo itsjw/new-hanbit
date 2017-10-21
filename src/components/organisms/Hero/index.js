@@ -8,23 +8,20 @@ import { Button, Heading, Nav, Image } from 'components'
 
 const Wrapper = Image.extend`
   width: 100vw;
-  height: 40em;
-  position: relative;
-
-  // small device
-  @media(max-width: 30em) {
-    height: 30em;
-    background-position: 15% center;
-  } 
-
-  // huge device
-  @media(min-width: 80em) {
-    height: 50em;
-  }
+  height: 30em;
+  background-position: start 0;
 
   // overide default hover effect
   &:hover {
     opacity: 1;
+  }
+
+  @media(max-width: 40em) {
+    height: 20em;
+  }
+
+  @media(min-width: 60em) {
+    height: 40em;
   }
 `
 
@@ -36,21 +33,32 @@ const MockWrapper = styled.img`
 `
 
 const InnerWrapper = styled.div`
-  position: absolute;
-  width: 15em;
-  padding: 2em;
-  height: 12em;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   line-height: 1.3;
-  margin-top: 18em;
+  padding: 1em;
 
-  @media(min-width: 30em) {
-    margin-left: 2em;
-  } 
+  display: flex;
+  flex-direction: column;
 
-  @media(min-width: 70em) {
-    width: 20em;
-    margin-top: 25em;
+  > h1:first-child {
+    margin-top: auto;
+  }
+
+  > a {
+    margin-top: 0.5em;
+  }
+
+  @media(min-width: 40em) {
+    padding: 2.5em;
+    > h1 {
+      margin-top: 0;
+      font-size: 2em;
+    }
+    button {
+      width: 12em;
+    }
   }
 `
 
@@ -59,11 +67,11 @@ const Hero = () => {
     return (
       <Wrapper src={hero}>
         <InnerWrapper>
-          <Heading size={1.5} color={palette('white', 0)}>Good Design</Heading>
-          <Heading size={1.5} color={palette('white', 0)}>That feets you.</Heading>
-          <Heading size={1.5} color={palette('white', 0)}>Hanbit</Heading>
+          <Heading size={1.5} color={palette('white', 0)} bold={1}>Good Design</Heading>
+          <Heading size={1.5} color={palette('white', 0)} bold={1}>That feets you.</Heading>
+          <Heading size={1.5} color={palette('white', 0)} bold={1}>Hanbit</Heading>
           <Nav to="/" data-hoverStyle="noHover">
-            <Button color={palette('white', 0)} transparent full>둘러보기</Button>
+            <Button color={palette('white', 0)} transparent>둘러보기</Button>
           </Nav>
         </InnerWrapper>
       </Wrapper>

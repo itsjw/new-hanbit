@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import root from 'window-or-global'
-import { fromHeader } from 'store/selectors'
+import { fromHeader, fromUser } from 'store/selectors'
 import {
   startSearch,
   cancelSearch,
   openDrawer,
   closeDrawer,
 } from 'store/actions'
+import api from 'services/api'
 
 import { Header } from 'components'
 
@@ -20,6 +21,7 @@ class HeaderContainer extends Component {
     drawerOpened: PropTypes.bool,
     onOpenDrawer: PropTypes.func,
     onCloseDrawer: PropTypes.func,
+    isLoggedIn: PropTypes.bool,
   }
   state = {
     width: root.innerWidth,
@@ -36,10 +38,15 @@ class HeaderContainer extends Component {
       width: window.innerWidth,
     }))
   }
+  handleLogout = () => {
+    api.get('/user/logout')
+    window.location.reload()
+  }
 
   render() {
+    const { handleLogout } = this
     return (
-      <Header {...this.props} {...this.state} />
+      <Header {...this.props} {...this.state} logout={handleLogout} />
     )
   }
 }
@@ -47,6 +54,7 @@ class HeaderContainer extends Component {
 const mapStateToProps = state => ({
   searching: fromHeader.isSearching(state),
   drawerOpened: fromHeader.isDrawerOpened(state),
+  isLoggedIn: fromUser.isLoggedIn(state),
 })
 
 const mapDispatchToProps = dispatch => ({

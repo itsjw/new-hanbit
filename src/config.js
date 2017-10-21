@@ -9,14 +9,15 @@ const config = {
     port: process.env.PORT || 3001,
     isBrowser: typeof window !== 'undefined',
     isServer: typeof window === 'undefined',
-    apiUrl: 'https://jsonplaceholder.typicode.com',
+    apiUrl: 'http://localhost:3001',
+    mongoUri: 'mongodb://leejh3224:10rhrnak@ds054999.mlab.com:54999/pypuz',
   },
   test: {},
   development: {},
   production: {
     host: process.env.HOST || 'localhost',
     port: process.env.PORT || 8080,
-    apiUrl: 'https://jsonplaceholder.typicode.com',
+    apiUrl: 'http://hanbitglasses.com',
   },
 }
 

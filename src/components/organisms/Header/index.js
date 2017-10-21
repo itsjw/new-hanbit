@@ -67,6 +67,8 @@ const Header = ({
   drawerOpened,
   onOpenDrawer,
   onCloseDrawer,
+  isLoggedIn,
+  logout,
   ...props
 }) => {
   return (
@@ -83,9 +85,15 @@ const Header = ({
             <Nav name="HANBIT" to="/" data-hoverStyle="noHover" />
             <RightWrapper>
               { width >= 550 ? <SearchField /> : <Icon name="search" clickable small onClick={onStartSearch} />}
-              <Nav to="/account" data-hoverStyle="noHover" >
-                <Icon name="user" clickable small />
-              </Nav>
+              {
+                isLoggedIn ? (
+                  <Icon name="logout" clickable small onClick={logout} />
+                ) : (
+                  <Nav to="/account" data-hoverStyle="noHover" >
+                    <Icon name="user" clickable small />
+                  </Nav>
+                )
+              }
             </RightWrapper>
           </Wrapper>
         )
@@ -103,6 +111,8 @@ Header.propTypes = {
   drawerOpened: PropTypes.bool,
   onOpenDrawer: PropTypes.func,
   onCloseDrawer: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
+  logout: PropTypes.func,
 }
 
 export default Header

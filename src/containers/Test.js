@@ -49,7 +49,6 @@ class Test extends Component {
         </form>
         message from store: {this.props.message}
         <p>{this.props.loading ? 'loading...' : 'loading ended!'}</p>
-        <p>{!this.props.loading && this.props.failed ? 'sorry...' : 'success!'}</p>
       </div>
     )
   }
