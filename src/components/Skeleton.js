@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Styled from 'styled-components'
+import styled from 'styled-components'
 import { palette } from 'styled-theme'
 
 const Wrapper = styled.div`

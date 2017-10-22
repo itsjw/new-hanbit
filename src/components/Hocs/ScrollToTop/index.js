@@ -7,6 +7,10 @@ class ScrollToTop extends Component {
     location: PropTypes.object,
     component: PropTypes.any,
   }
+  shouldComponentUpdate(prev) {
+    console.log(prev)
+    return true
+  }
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
       window.scrollTo(0, 0)

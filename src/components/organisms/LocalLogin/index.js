@@ -5,10 +5,16 @@ import { palette } from 'styled-theme'
 import { Field } from 'redux-form'
 import { required, email, length } from 'redux-form-validators'
 
-import { Button, Heading, Input, Text, Nav } from 'components'
+import {
+  Button,
+  Heading,
+  Input,
+  Text,
+  Nav,
+} from 'components'
 
 const Wrapper = styled.div`
-  max-width: 100%;
+  max-width: ${({ formWidth }) => formWidth}em;
   height: auto;
   margin: 0.5em auto;
   padding: 2em 2em 1.4em 2em;
@@ -17,6 +23,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: stretch;
   text-align: center;
+  .form-steps {
+    margin-bottom: 2em;
+  }
   > form {
     flex-grow: 1;
     display: flex;
@@ -58,7 +67,7 @@ const PasswordField = ({ input, meta: { touched, error }, ...rest }) => {
     <div>
       <Input
         type="password"
-        placeholder="비밀번호"
+        placeholder="비밀번호: 8자 이상"
         font={1}
         {...input}
         {...rest}
@@ -73,9 +82,10 @@ const LocalLogin = ({
   handleSubmit,
   submit,
   disabled,
+  formWidth,
 }) => {
   return (
-    <Wrapper>
+    <Wrapper formWidth={formWidth}>
       <Heading size={1.7}>가입</Heading>
       <form onSubmit={handleSubmit(submit)}>
         <Field
@@ -86,7 +96,7 @@ const LocalLogin = ({
         <Field
           name="password"
           component={PasswordField}
-          validate={[required({ message: '비밀번호를 입력해주세요.' }), length({ min: 4, message: '4자 이상 입력해주세요.' })]}
+          validate={[required({ message: '비밀번호를 입력해주세요.' }), length({ min: 8, message: '8자 이상 입력해주세요.' })]}
         />
         <Button type="submit" full disabled={disabled}>계속하기</Button>
         <BottomWrapper>
@@ -102,6 +112,7 @@ LocalLogin.propTypes = {
   handleSubmit: PropTypes.func,
   submit: PropTypes.func,
   disabled: PropTypes.bool,
+  formWidth: PropTypes.number,
 }
 
 export default LocalLogin

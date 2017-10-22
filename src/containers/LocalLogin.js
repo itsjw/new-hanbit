@@ -15,6 +15,7 @@ class LocalLoginContainer extends Component {
     onSignUpRequest: PropTypes.func,
     history: PropTypes.object,
     pending: PropTypes.bool,
+    formWidth: PropTypes.number,
   }
 
   submit = ({ email, password }) => {
@@ -28,13 +29,14 @@ class LocalLoginContainer extends Component {
     })
   }
   render() {
-    const { handleSubmit, pending } = this.props
+    const { handleSubmit, pending, formWidth } = this.props
     const { submit } = this
     return (
       <LocalLogin
         handleSubmit={handleSubmit}
         submit={submit}
         disabled={pending}
+        formWidth={formWidth}
       />
     )
   }

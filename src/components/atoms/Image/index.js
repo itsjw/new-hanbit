@@ -3,8 +3,8 @@ import ProgressiveImage from 'react-progressive-bg-image'
 
 const Image = styled(ProgressiveImage).attrs({
   placeholder: '',
-  blur: 3,
-  opacity: 0.8,
+  blur: 1,
+  opacity: 0.9,
 })`
   background-repeat: no-repeat;
   background-size: cover;

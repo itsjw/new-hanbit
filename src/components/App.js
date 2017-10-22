@@ -2,6 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
+import { whyDidYouUpdate } from 'why-did-you-update'
 
 import {
   ScrollToTop,
@@ -18,6 +19,18 @@ import { globalStyle } from './themes/globalStyle'
 
 // inject global
 globalStyle
+
+if (process.env.NODE_ENV !== 'production') {
+  /* eslint-disable-next-line, no-unused-vars/no-unused-vars,react/no-deprecated */
+  let createClass = React.createClass
+  Object.defineProperty(React, 'createClass', {
+    set: (nextCreateClass) => {
+      createClass = nextCreateClass
+    },
+  })
+  // eslint-disable-next-line global-require
+  whyDidYouUpdate(React)
+}
 
 const App = () => {
   return (
