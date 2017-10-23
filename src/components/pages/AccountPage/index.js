@@ -9,6 +9,7 @@ import {
   SigninForm,
   FormSteps,
   Signup2Form,
+  Signup3Form,
 } from 'containers'
 import { PageTemplate } from 'components'
 
@@ -56,7 +57,11 @@ const AccountPage = ({
                 />
             }
             {
-              current > 1 && <p>개인정보 입력</p>
+              current > 1 &&
+                <Signup3Form
+                  formWidth={formWidth}
+                  endStep={endStep}
+                />
             }
           </Wrapper>
         )

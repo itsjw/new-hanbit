@@ -25,7 +25,7 @@ class Signup2FormContainer extends Component {
   }
   render() {
     const Box = styled.div`
-      width: 60%;
+      width: 20em;
       border: 1px solid ${palette('black', 0)};
       padding: 1em;
     `

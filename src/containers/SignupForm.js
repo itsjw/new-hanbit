@@ -5,9 +5,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 import { required, email, length } from 'redux-form-validators'
-import { isPending } from 'redux-saga-thunk'
-import { withRouter } from 'react-router-dom'
-import { signUpRequest } from 'store/actions'
 
 import {
   Button,
@@ -21,9 +18,6 @@ class SignupFormContainer extends Component {
 
   static propTypes = {
     handleSubmit: PropTypes.func,
-    onSignUpRequest: PropTypes.func,
-    history: PropTypes.object,
-    pending: PropTypes.bool,
     formWidth: PropTypes.number,
     changeView: PropTypes.func,
     endStep: PropTypes.func,
@@ -40,7 +34,6 @@ class SignupFormContainer extends Component {
   render() {
     const {
       handleSubmit,
-      pending,
       formWidth,
       changeView,
     } = this.props
@@ -125,7 +118,7 @@ class SignupFormContainer extends Component {
             name="password"
             component={PasswordField}
           />
-          <Button type="submit" full disabled={pending}>계속하기</Button>
+          <Button type="submit" full>계속하기</Button>
           <BottomWrapper>
             <Text>이미 회원이신가요?</Text>
             <Nav
@@ -142,13 +135,9 @@ class SignupFormContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  pending: isPending(state, 'signup'),
-})
+const mapStateToProps = state => ({})
 
-const mapDispatchToProps = dispatch => ({
-  onSignUpRequest: (email, password) => dispatch(signUpRequest(email, password)),
-})
+const mapDispatchToProps = dispatch => ({})
 
 const connected = connect(mapStateToProps, mapDispatchToProps)(SignupFormContainer)
 
@@ -168,9 +157,9 @@ const validate = (values) => {
   return errors
 }
 
-export default withRouter(reduxForm({
+export default reduxForm({
   form: 'signup',
   destroyOnUnmount: false,
   validate,
-})(connected))
+})(connected)
 
