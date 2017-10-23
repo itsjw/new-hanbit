@@ -3,7 +3,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import { Header, SignupForm, SigninForm, FormSteps } from 'containers'
+import {
+  Header,
+  SignupForm,
+  SigninForm,
+  FormSteps,
+  Signup2Form,
+} from 'containers'
 import { PageTemplate } from 'components'
 
 const formWidth = 30
@@ -43,7 +49,11 @@ const AccountPage = ({
                 />
             }
             {
-              current === 1 && <p>약관 페이지</p>
+              current === 1 &&
+                <Signup2Form
+                  formWidth={formWidth}
+                  endStep={endStep}
+                />
             }
             {
               current > 1 && <p>개인정보 입력</p>
