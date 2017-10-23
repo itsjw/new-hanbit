@@ -35,3 +35,23 @@ passport.use('local.signup', new LocalStrategy({
       })
       .catch(err => done(err, false))
 }))
+
+passport.use('local.signin', new LocalStrategy({
+  usernameField: 'email',
+  passwordField: 'password',
+  passReqToCallback: true,
+}, (req, email, password, done) => {
+  User.findOne({ email })
+      .then((user) => {
+        if (!user) {
+          // json uer 객체 대신 에러 객체 전송
+          return done(null, { message: 'user doesn\'t exist!' })
+        }
+        if (!user.validatePassword(password)) {
+          return done(null, { message: 'invalid password' })
+        }
+        return done(null, user)
+      })
+      .catch(err => done(err, false))
+}))
+

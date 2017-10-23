@@ -134,7 +134,6 @@
     "uuid": "^3.1.0",
     "validator": "^8.0.0",
     "webpack-bundle-analyzer": "^2.9.0",
-    "why-did-you-update": "^0.0.8",
     "window-or-global": "^1.0.1"
   }
 }

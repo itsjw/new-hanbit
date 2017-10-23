@@ -19,10 +19,22 @@ const Nav = ({
   to,
   name,
   children,
+  changeView,
+  disabled,
   ...props
 }) => {
   return (
-    <Wrapper to={to} {...props}>
+    <Wrapper
+      to={to}
+      onClick={(e) => {
+        if (disabled) {
+          e.preventDefault()
+          changeView()
+        }
+        e.default()
+      }}
+      {...props}
+    >
       {name || children}
     </Wrapper>
   )
@@ -37,6 +49,8 @@ Nav.propTypes = {
   ]),
   hoverColor: PropTypes.func,
   children: PropTypes.node,
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
 }
 
 export default Nav

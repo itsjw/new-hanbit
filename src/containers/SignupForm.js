@@ -6,9 +6,9 @@ import { isPending } from 'redux-saga-thunk'
 import { withRouter } from 'react-router-dom'
 import { signUpRequest } from 'store/actions'
 
-import { LocalLogin } from 'components'
+import { SignupForm } from 'components'
 
-class LocalLoginContainer extends Component {
+class SignupFormContainer extends Component {
 
   static propTypes = {
     handleSubmit: PropTypes.func,
@@ -16,27 +16,50 @@ class LocalLoginContainer extends Component {
     history: PropTypes.object,
     pending: PropTypes.bool,
     formWidth: PropTypes.number,
+    changeView: PropTypes.func,
+    endStep: PropTypes.func,
+  }
+
+  static defaultProps = {
+    formWidth: 30,
   }
 
   submit = ({ email, password }) => {
     const { onSignUpRequest, history } = this.props
     onSignUpRequest(email, password)
     .then(({ result }) => {
+      console.log(result)
       return result.email && history.push('/')
     })
     .catch((error) => {
+      console.log(error)
       throw new SubmissionError(error)
     })
   }
+
+  goNextStep = (e) => {
+    e.preventDefault()
+    this.props.endStep()
+  }
   render() {
-    const { handleSubmit, pending, formWidth } = this.props
-    const { submit } = this
+    const {
+      handleSubmit,
+      pending,
+      formWidth,
+      changeView,
+    } = this.props
+    const {
+      submit,
+      goNextStep,
+    } = this
     return (
-      <LocalLogin
+      <SignupForm
         handleSubmit={handleSubmit}
         submit={submit}
+        goNextStep={goNextStep}
         disabled={pending}
         formWidth={formWidth}
+        changeView={changeView}
       />
     )
   }
@@ -50,9 +73,10 @@ const mapDispatchToProps = dispatch => ({
   onSignUpRequest: (email, password) => dispatch(signUpRequest(email, password)),
 })
 
-const connected = connect(mapStateToProps, mapDispatchToProps)(LocalLoginContainer)
+const connected = connect(mapStateToProps, mapDispatchToProps)(SignupFormContainer)
 
 export default withRouter(reduxForm({
-  form: 'local-login',
+  form: 'signup',
+  destroyOnUnmount: false,
 })(connected))
 

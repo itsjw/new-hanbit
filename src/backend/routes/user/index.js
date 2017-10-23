@@ -15,6 +15,8 @@ const bodySchema = {
 
 router.post('/signup', Celebrate(bodySchema), userContorl.signup)
 
+router.post('/signin', Celebrate(bodySchema), userContorl.signin)
+
 // it will show you why request has failed
 router.use(Celebrate.errors())
 

@@ -17,6 +17,21 @@ const userControl = {
       })
     })(req, res, next)
   },
+  signin: (req, res, next) => {
+    passport.authenticate('local.signin', (err, result) => {
+      if (err) {
+        res.status(500).json(err)
+      }
+      // Joi validation error
+      if (result.statusCode === 400) {
+        return res.status(400).json({ message: '잘못된 요청입니다.' })
+      }
+      req.logIn(result, (err) => {
+        if (err) { return next(err) }
+        return res.json(result)
+      })
+    })(req, res, next)
+  },
   check: (req, res) => {
     redisClient.keysAsync('*')
     .then((keys) => {
